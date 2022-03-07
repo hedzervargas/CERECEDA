@@ -31,7 +31,7 @@ class Stopwatch {
       .join("");
   }
   reset() {
-    this.msPassed = 444444;
+    this.msPassed = 0;
     this.mutableMsPassed = 0;
     this.minutesPassed = 0;
     this.secondsPassed = 0;
