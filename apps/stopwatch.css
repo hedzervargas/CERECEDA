@@ -352,13 +352,16 @@ body {
 .buttons {
   display: flex;
   flex-direction: row;
-  gap: 10rem;
   justify-content: center;
 }
 
 .btn {
   height: 5rem;
   width: 5rem;
+}
+
+.btn-left {
+  margin-right: 10rem;
 }
 
 @media screen and (max-width: 550px) {
@@ -368,8 +371,8 @@ body {
   .time {
     margin-bottom: 0;
   }
-  .buttons {
-    gap: 7rem;
+  .btn-left {
+    margin-right: 7rem;
   }
   .btn {
     height: 4.5rem;
@@ -383,6 +386,12 @@ body {
   margin: 2rem auto 0 auto;
   scrollbar-width: thin;
   scrollbar-color: var(--grey-600) var(--grey-400);
+}
+
+.laps-scroll {
+  overflow-y: scroll;
+  padding: 3px;
+  -webkit-overflow-scroll: touch;
 }
 
 .laps::-webkit-scrollbar {

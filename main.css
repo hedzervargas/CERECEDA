@@ -315,9 +315,9 @@ header {
 }
 
 .profile-pic {
-  width: 12.5rem;
+  width: 15rem;
   position: absolute;
-  top: 0%;
+  top: -3.5%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -329,7 +329,8 @@ header {
 
 .hero h2 {
   width: 50vw;
-  margin: 1.5rem auto 0;
+  margin: 1.5rem auto 0.5rem;
+  font-size: 2.2rem;
 }
 
 .underline {
@@ -339,32 +340,20 @@ header {
 
 .hero p {
   margin: 1.5rem auto;
-  max-width: 25rem;
+  max-width: 30rem;
 }
 
 .socials {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
   margin-top: 3rem;
 }
 
-/* screen for small width */
-@media screen and (max-width: 500px) {
-  header {
-    padding-top: 10rem;
-    min-height: 41rem;
-  }
-  .hero h2 {
-    font-size: 1.55rem;
-  }
-  .hero p {
-    font-size: 0.8rem;
-    max-width: 18rem;
-  }
-  .socials {
-    margin-top: 0;
-  }
+.socials > li {
+  margin-right: 1.5rem;
+}
+.socials > li:last-of-type {
+  margin-right: 0;
 }
 
 .socials i {
@@ -382,6 +371,39 @@ header {
   left: 50%;
 }
 
+/* screen for small width */
+@media screen and (max-width: 773px) {
+  .profile-pic {
+    width: 12.5rem;
+    top: 0;
+  }
+  .hero h2 {
+    font-size: 1.9rem;
+    margin: 1.5rem auto 0;
+  }
+  .hero p {
+    max-width: 25rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  header {
+    padding-top: 10rem;
+    min-height: 41rem;
+  }
+  .hero h2 {
+    font-size: 1.55rem;
+  }
+  .hero p {
+    font-size: 0.8rem;
+    max-width: 18rem;
+  }
+  .arrow-down {
+    top: 26.3rem;
+    left: 95%;
+    width: 1.1rem;
+  }
+}
+
 /* projects */
 
 .projects {
@@ -394,12 +416,6 @@ header {
 
 .projects .section-title h2 {
   font-size: 2.441rem;
-}
-
-@media screen and (max-width: 500px) {
-  .projects .section-title h2 {
-    font-size: 1.9rem;
-  }
 }
 
 .projects-container {
@@ -416,6 +432,16 @@ header {
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-1);
   transition: var(--transition);
+}
+
+@media screen and (max-width: 500px) {
+  .projects .section-title h2 {
+    font-size: 1.9rem;
+  }
+  .project {
+    width: 19rem;
+    height: 27.5rem;
+  }
 }
 
 .project:hover {

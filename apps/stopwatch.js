@@ -45,8 +45,7 @@ class Stopwatch {
       { lapNumber: "", lapTime: "" },
     ];
     this.highestLap = { lapNumber: "", index: "" };
-    this.laps.style.overflowY = "visible";
-    this.laps.style.paddingRight = "0";
+    this.laps.classList.remove("laps-scroll");
 
     this.updateDisplay();
   }
@@ -124,11 +123,9 @@ class Stopwatch {
       }
       this.updateDisplay();
       if (this.laps.children.length > 10) {
-        this.laps.style.overflowY = "scroll";
-        this.laps.style.paddingRight = "3px";
+        this.laps.classList.add("laps-scroll");
       }
       document.querySelector(".last-lap").scrollIntoView();
-      //   console.log(lastlap);
     } else {
       this.reset();
     }
