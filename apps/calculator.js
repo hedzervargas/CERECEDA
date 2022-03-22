@@ -1,8 +1,9 @@
 class Calculator {
-  constructor(input, answer, alert) {
+  constructor(input, answer, alert, display) {
     this.inputText = input;
     this.answerText = answer;
     this.alert = alert;
+    this.display = display;
     this.clear();
   }
   clear() {
@@ -22,22 +23,7 @@ class Calculator {
     }
   }
   typeNumber(number) {
-    if (this.input.length + 1 > 14) {
-      this.showAlert("Number is too long");
-      return;
-    }
     if (number === "." && this.input.includes(".")) return;
-    if (!isNaN(parseFloat(this.input + number))) {
-      let temporaryAnswer =
-        Math.round(
-          eval(`${this.answer}${this.operator}${this.input}${number}`) * 10000
-        ) / 10000;
-      temporaryAnswer = temporaryAnswer.toString();
-      if (temporaryAnswer.length > 14) {
-        this.showAlert(`Answer won't fit in screen`);
-        return;
-      }
-    }
     if (this.justCalculated) {
       this.input = number;
       this.justCalculated = false;
@@ -47,6 +33,7 @@ class Calculator {
     this.updateDisplay();
   }
   typeOperator(operator) {
+    if (!this.input) return;
     this.operator = operator;
     if (
       (this.input.length === 1 && !this.input.includes(".")) ||
@@ -99,6 +86,10 @@ class Calculator {
     this.answer = this.answer.toString();
     this.inputText.textContent = this.input;
     this.answerText.textContent = this.answer + " " + this.operator;
+    this.display.scrollLeft += 9999999999999;
+    this.display.scrollWidth > this.display.clientWidth
+      ? this.display.classList.add("display-scroll")
+      : this.display.classList.remove("display-scroll");
   }
   showAlert(message) {
     this.alert.textContent = message;
@@ -114,6 +105,7 @@ const input = document.querySelector(".input");
 const answer = document.querySelector(".answer");
 const alertElement = document.querySelector(".alert");
 const allButtons = [...document.querySelector(".keys").children];
+const display = document.querySelector(".display-child");
 
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
@@ -122,7 +114,7 @@ const backspace = document.querySelector(".Backspace");
 const clear = document.querySelector(".clear");
 const is = document.querySelector(".is");
 
-const calculator = new Calculator(input, answer, alertElement);
+const calculator = new Calculator(input, answer, alertElement, display);
 
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
